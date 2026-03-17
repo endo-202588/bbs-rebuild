@@ -19,7 +19,12 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <% if current_user %>
+      <%= render "shared/header" %>
+    <% end %>
+
+    <%= render "shared/flash" %>
+    <main>
       <%= yield %>
     </main>
   </body>

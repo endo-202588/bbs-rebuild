@@ -1,0 +1,13 @@
+one:
+  email: test1@example.com
+  crypted_password: password
+  display_name: testuser1
+  first_name: Test
+  last_name: User
+
+two:
+  email: test2@example.com
+  crypted_password: password
+  display_name: testuser2
+  first_name: Sample
+  last_name: User

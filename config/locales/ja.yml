@@ -1,0 +1,30 @@
+ja:
+  email: メール
+  password: パスワード
+
+  defaults:
+    login: ログイン
+    logout: ログアウト
+    register: 新規登録
+
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        display_name: 表示名
+
+      post:
+        title: タイトル
+        body: 本文
+
+  enums:
+    post:
+      status:
+        draft: 下書き
+        published: 公開
