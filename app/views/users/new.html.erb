@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+<div class="min-h-screen bg-yellow-100 flex items-center justify-center">
   <div class="bg-white p-10 rounded-xl shadow-md w-full max-w-md">
     <h1 class="text-3xl font-bold text-gray-800 text-center mb-6">
       新規登録
@@ -8,7 +8,10 @@
       <%= f.input :email %>
       <%= f.input :password, required: true %>
       <%= f.input :password_confirmation %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
       <%= f.input :display_name %>
+      <%= f.button :submit, "登録", class: "w-full" %>
     <% end %>
   </div>
 </div>

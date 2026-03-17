@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  skip_before_action :require_login, only: %i[new create]
+  skip_before_action :require_login
 
   def new
     @user = User.new
@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     @user = User.new(login_params)
 
     if login(@user.email, @user.password)
-      redirect_to root_path, success: "ログインしました"
+      redirect_to posts_path, success: "ログインしました"
     else
       flash.new[:danger] = "メールまたはパスワードが違います"
       render :new, status: :unprocessable_entity
@@ -19,7 +19,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to login_path, success: "ログアウトしました"
+    redirect_to root_path, success: "ログアウトしました"
   end
 
   private
