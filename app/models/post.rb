@@ -6,4 +6,8 @@ class Post < ApplicationRecord
   def owned_by?(user)
     user && user.id == user_id
   end
+
+  def tag_names
+    tags.pluck(:name).join(" ")
+  end
 end
