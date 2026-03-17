@@ -24,5 +24,5 @@ SimpleForm.setup do |config|
 
   config.browser_validations = false
 
-  config.boolean_label_class = 'checkbox'
+  config.boolean_label_class = "checkbox"
 end
