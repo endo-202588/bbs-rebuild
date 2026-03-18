@@ -1,0 +1,29 @@
+
+<%= simple_form_for @post do |f| %>
+
+<%= f.input :title,
+    label: "タイトル",
+    label_html: { class: "block text-sm font-medium text-gray-700 mb-1" },
+    input_html: { class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2" } %>
+
+<%= f.input :body, as: :text,
+    label: "本文",
+    wrapper_html: { class: "mt-3" },
+    label_html: { class: "block text-sm font-medium text-gray-700 mb-1" },
+    input_html: { 
+        rows: 6,
+        class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2" } %>
+
+<%= f.input :image, as: :file %>
+
+<div class="mt-3">
+    <label class="block text-sm font-medium text-gray-700 mb-1">タグ</label>
+    <%= text_field_tag :tag_names, @post.tag_names,
+        placeholder: "例: ruby rails web",
+        class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2" %>
+</div>
+
+<%= f.button :submit,
+    "登録",
+    class: "mt-3 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700" %>
+<% end %>

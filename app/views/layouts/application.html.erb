@@ -18,7 +18,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="<%= 'bg-yellow-100 min-h-screen' if top_page? %>">
     <% if current_user %>
       <%= render "shared/header" %>
     <% end %>

@@ -17,6 +17,8 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
+        first_name: 名
+        last_name: 姓
         display_name: 表示名
 
       post:

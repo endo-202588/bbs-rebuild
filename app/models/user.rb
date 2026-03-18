@@ -2,6 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :posts
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
 
     validates :password,
             length: { minimum: 4 },
@@ -28,6 +30,10 @@ class User < ApplicationRecord
             length: { maximum: 30 }
 
   before_validation :downcase_email
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[display_name]
+  end
 
   private
 
