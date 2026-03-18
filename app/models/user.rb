@@ -31,6 +31,10 @@ class User < ApplicationRecord
 
   before_validation :downcase_email
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[display_name]
+  end
+  
   private
 
   def downcase_email

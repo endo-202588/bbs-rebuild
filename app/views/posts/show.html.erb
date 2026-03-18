@@ -21,13 +21,13 @@
               class: "px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" %>
         </div>
       <% end %>
-
     </div>
 
-    <!-- 投稿日 -->
-    <div class="text-gray-500 text-sm mb-6 text-right">
-      <%= @post.created_at.strftime("%Y/%m/%d") %>
-    </div>
+    <% if @post.image.attached? %>
+      <div class="mb-6">
+        <%= image_tag @post.image, class: "w-full max-w-md mx-auto h-auto object-cover rounded-lg" %>
+      </div>
+    <% end %>
 
     <!-- 本文 -->
     <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 min-h-[200px] flex flex-col justify-between">
@@ -43,7 +43,15 @@
           <% end %>
         </div>
       <% end %>
+    </div>
 
+    <div class="flex justify-between items-center mt-4 text-sm text-gray-500">
+      <p>
+        投稿者：<span class="font-medium text-gray-700"><%= @post.user.display_name %></span>
+      </p>
+      <p>
+        <%= @post.created_at.strftime("%Y/%m/%d") %>
+      </p>
     </div>
 
     <!-- 戻るリンク -->

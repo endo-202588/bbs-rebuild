@@ -1,9 +1,28 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :require_owner, only: %i[show edit update destroy]
+  before_action :require_owner, only: %i[edit update destroy]
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    q_params = params[:q]&.dup || {}
+
+    # 👇 tagsは自前で処理するので削除
+    tag_query = q_params&.delete(:tags_name_cont)
+
+    @q = Post.ransack(q_params)
+    @posts = @q.result
+
+    @posts = apply_multi_search(@posts) if q_params.present?
+
+    # 👇 tagsだけ別処理
+    if tag_query.present?
+      @posts = apply_tag_search(@posts, tag_query)
+    end
+
+    @posts = @posts
+              .preload(:user, :tags)
+              .order(created_at: :desc)
+              .page(params[:page])
+              .per(9)
   end
 
   def show
@@ -64,7 +83,44 @@ class PostsController < ApplicationController
     end
   end
 
+  def apply_multi_search(posts)
+    q = params[:q] || {}
+
+    # 🔍 キーワード
+    if q[:title_or_body_cont].present?
+      keywords = q[:title_or_body_cont].to_s.split(/\s+/)
+
+      keywords.each do |word|
+        posts = posts.where(
+          "posts.title ILIKE ? OR posts.body ILIKE ?",
+          "%#{word}%", "%#{word}%"
+        )
+      end
+    end
+
+    # 👤 投稿者
+    if q[:user_display_name_cont].present?
+      names = q[:user_display_name_cont].to_s.split(/\s+/)
+
+      posts = posts.joins(:user)
+      names.each do |word|
+        posts = posts.where("users.display_name ILIKE ?", "%#{word}%")
+      end
+    end
+
+    posts.distinct
+  end
+
+  def apply_tag_search(posts, tag_query)
+    tag_words = tag_query.to_s.split(/\s+/)
+
+    posts.joins(:tags)
+        .where(tags: { name: tag_words })
+        .group("posts.id")
+        .having("COUNT(DISTINCT tags.id) = ?", tag_words.size)
+  end
+
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image)
   end
 end
