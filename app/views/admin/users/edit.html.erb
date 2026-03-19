@@ -1,0 +1,36 @@
+<div class="container mx-auto px-4 py-6 max-w-xl">
+
+  <div class="bg-white shadow-md rounded-lg border border-gray-200 p-6">
+
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">ユーザー編集</h1>
+
+    <%= form_with model: [:admin, @user], class: "space-y-6" do |f| %>
+
+      <!-- ロール -->
+      <div>
+        <%= f.label :role, "ロール",
+            class: "block text-sm font-medium text-gray-700 mb-1" %>
+
+        <%= f.select :role,
+          User.roles_i18n.invert,
+          {},
+          class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2" %>
+      </div>
+
+      <!-- ボタン -->
+      <div class="flex justify-end gap-3">
+
+        <%= link_to "戻る",
+            admin_users_path,
+            class: "px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100" %>
+
+        <%= f.submit "更新",
+            class: "px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700" %>
+
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+<div class="max-w-2xl mx-auto mt-10">
+
+  <h1 class="text-2xl font-bold mb-6">
+    <%= @user.display_name %> さんのプロフィール
+  </h1>
+
+  <div class="bg-white shadow rounded-xl p-6 space-y-4">
+
+    <div>
+      <p class="text-sm text-gray-500">表示名</p>
+      <p class="text-lg font-semibold"><%= @user.display_name %></p>
+    </div>
+
+    <div>
+      <p class="text-sm text-gray-500">名前</p>
+      <p class="text-lg">
+        <%= @user.full_name %>
+      </p>
+    </div>
+
+    <div class="pt-4">
+      <%= link_to "プロフィールを編集",
+          edit_profile_path,
+          class: "inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+    </div>
+
+  </div>
+</div>

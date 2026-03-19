@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
+  enum role: { general: 0, admin: 1 }
+
     validates :password,
             length: { minimum: 4 },
             if: -> { new_record? || will_save_change_to_crypted_password? }
