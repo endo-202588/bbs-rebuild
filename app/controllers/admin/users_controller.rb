@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: %i[edit update destroy]
-  
+
   def index
     @users = User.order(created_at: :desc).decorate
   end
@@ -28,6 +28,10 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params.require(:user).permit(:role)
+    permitted = [ :email, :display_name, :first_name, :last_name ]
+
+    permitted << :role if current_user.admin?
+
+    params.require(:user).permit(permitted)
   end
 end
