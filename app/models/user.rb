@@ -1,11 +1,9 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  has_many :posts
-  has_many :post_tags, dependent: :destroy
-  has_many :tags, through: :post_tags
+  has_many :posts, dependent: :destroy
 
-  enum role: { general: 0, admin: 1 }
+  enum :role, { general: 0, admin: 1 }
 
     validates :password,
             length: { minimum: 4 },

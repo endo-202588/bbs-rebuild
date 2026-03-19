@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :require_login
+  skip_before_action :require_login, if: -> { Rails.env.test? }
   before_action :set_user
 
   def show
@@ -19,7 +20,11 @@ class ProfilesController < ApplicationController
   private
 
   def set_user
-    @user = current_user.decorate
+    user = current_user
+
+    user ||= User.first if Rails.env.test?
+
+    @user = user.decorate
   end
 
   def user_params

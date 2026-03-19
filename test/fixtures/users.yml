@@ -1,13 +1,15 @@
-one:
-  email: test1@example.com
-  crypted_password: password
-  display_name: testuser1
-  first_name: Test
+admin:
+  email: admin@example.com
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("password") %>
+  display_name: 管理者
+  first_name: Admin
   last_name: User
+  role: admin
 
-two:
-  email: test2@example.com
-  crypted_password: password
-  display_name: testuser2
-  first_name: Sample
+general:
+  email: user@example.com
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("password") %>
+  display_name: 一般ユーザー
+  first_name: General
   last_name: User
+  role: general
