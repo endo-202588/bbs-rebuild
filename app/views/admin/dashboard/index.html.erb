@@ -1,0 +1,58 @@
+<div class="container mx-auto px-4 py-6">
+
+  <h1 class="text-2xl font-bold text-gray-800 mb-6">管理者ダッシュボード</h1>
+
+  <!-- 統計カード -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+    <!-- ユーザー数 -->
+    <%= link_to admin_users_path, class: "block" do %>
+      <div class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition duration-300 p-6">
+        <p class="text-sm text-gray-500">ユーザー数</p>
+        <p class="text-3xl font-bold text-gray-800 mt-2">
+          <%= @users_count %>
+        </p>
+      </div>
+    <% end %>
+
+    <!-- 投稿数 -->
+    <%= link_to admin_posts_path, class: "block" do %>
+      <div class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition duration-300 p-6">
+        <p class="text-sm text-gray-500">投稿数</p>
+        <p class="text-3xl font-bold text-gray-800 mt-2">
+          <%= @posts_count %>
+        </p>
+      </div>
+    <% end %>
+
+  </div>
+
+  <!-- 最近の投稿 -->
+  <div class="bg-white border border-gray-200 rounded-lg shadow p-6">
+
+    <h2 class="text-lg font-semibold text-gray-800 mb-4">最近の投稿</h2>
+
+    <ul class="divide-y divide-gray-200">
+      <% @recent_posts.each do |post| %>
+        <li class="py-3 flex justify-between items-center">
+
+          <div>
+            <p class="text-sm font-medium text-gray-900">
+              <%= post.title %>
+            </p>
+            <p class="text-xs text-gray-500">
+              <%= post.user.display_name %> ・ <%= l(post.created_at, format: :short) %>
+            </p>
+          </div>
+
+          <%= link_to "詳細",
+              admin_post_path(post),
+              class: "text-blue-600 hover:text-blue-800 text-sm" %>
+
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+
+</div>

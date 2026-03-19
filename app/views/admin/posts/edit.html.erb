@@ -6,7 +6,9 @@
       投稿編集
     </h1>
 
-    <%= render "form", post: @post, form_scope: nil %>
+    <%= render "posts/form",
+    post: @post,
+    form_scope: [:admin, @post] %>
 
   </div>
 

@@ -30,3 +30,7 @@ ja:
       status:
         draft: 下書き
         published: 公開
+    user:
+      role:
+        general: 一般ユーザー
+        admin: 管理者

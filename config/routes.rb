@@ -10,4 +10,12 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts
+
+  resource :profile, only: %i[show edit update]
+
+  namespace :admin do
+    root "dashboard#index"
+    resources :users
+    resources :posts
+  end
 end
