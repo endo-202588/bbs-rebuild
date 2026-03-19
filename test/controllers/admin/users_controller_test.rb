@@ -23,7 +23,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     patch admin_user_url(@user), params: {
       user: { display_name: "変更後" }
     }
-    
+
     assert_redirected_to admin_users_url
   end
 

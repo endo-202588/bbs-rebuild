@@ -5,7 +5,7 @@ class Admin::DashboardControllerTest < ActionDispatch::IntegrationTest
     @admin = users(:admin)
     login_user(@admin)
   end
-  
+
   test "should get index" do
     get admin_root_url
     assert_response :success
