@@ -30,7 +30,7 @@ class Admin::UsersController < Admin::BaseController
   def user_params
     permitted = [ :email, :display_name, :first_name, :last_name ]
 
-    permitted << :role if current_user.admin?
+    permitted << :role if current_user.admin? && current_user != @user
 
     params.require(:user).permit(permitted)
   end
