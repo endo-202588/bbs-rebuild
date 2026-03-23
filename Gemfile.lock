@@ -117,7 +117,7 @@ GEM
       request_store (>= 1.0)
       ruby2_keywords
     drb (2.2.3)
-    enum_help (0.0.19)
+    enum_help (0.0.20)
       activesupport (>= 3.0.0)
     erb (6.0.2)
     erubi (1.13.1)
@@ -186,7 +186,9 @@ GEM
     mcp (0.8.0)
       json-schema (>= 4.1)
     mini_mime (1.1.5)
-    minitest (5.27.0)
+    minitest (6.0.2)
+      drb (~> 2.0)
+      prism (~> 1.5)
     msgpack (1.8.0)
     multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
@@ -421,7 +423,7 @@ DEPENDENCIES
   capybara
   debug
   draper
-  enum_help (= 0.0.19)
+  enum_help (= 0.0.20)
   factory_bot_rails
   importmap-rails
   jbuilder
