@@ -32,9 +32,11 @@ RSpec.describe User, type: :model do
   end
 
   it "emailが重複していると無効" do
-    create(:user, email: "test@example.com")
-    user = build(:user, email: "test@example.com")
+    user = create(:user)
 
-    expect(user).to be_invalid
+    duplicate = build(:user)
+    duplicate.email = user.email
+
+    expect(duplicate).to be_invalid
   end
 end
