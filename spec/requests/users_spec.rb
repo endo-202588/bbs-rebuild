@@ -9,18 +9,7 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "POST /users" do
-    let(:valid_params) do
-      {
-        user: {
-          email: "test@example.com",
-          password: "password",
-          password_confirmation: "password",
-          display_name: "テストユーザー",
-          first_name: "taro",
-          last_name: "test"
-        }
-      }
-    end
+    let(:valid_params) { { user: attributes_for(:user) } }
 
     it "正常にユーザーが作成される" do
       expect {
@@ -54,10 +43,12 @@ RSpec.describe "Users", type: :request do
     end
 
     it "emailが重複していると作成されない" do
-      create(:user, email: "test@example.com")
+      user = create(:user)
+
+      params = { user: attributes_for(:user, email: user.email) }
 
       expect {
-        post users_path, params: valid_params
+        post users_path, params: params
       }.not_to change(User, :count)
 
       expect(response).to have_http_status(:unprocessable_entity)
