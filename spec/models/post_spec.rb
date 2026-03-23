@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-
   describe "バリデーション" do
-
     it "有効な投稿は保存できる" do
       post = build(:post)
       expect(post).to be_valid

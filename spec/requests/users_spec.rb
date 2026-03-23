@@ -9,7 +9,6 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "POST /users" do
-
     let(:valid_params) do
       {
         user: {

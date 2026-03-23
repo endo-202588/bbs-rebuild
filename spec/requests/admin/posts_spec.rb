@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Admin::Posts", type: :request do
-
   describe "GET /admin/posts" do
-
     context "未ログインの場合" do
       it "ログイン画面にリダイレクトされる" do
         get admin_posts_path
@@ -36,6 +34,5 @@ RSpec.describe "Admin::Posts", type: :request do
         expect(response).to have_http_status(:ok)
       end
     end
-
   end
 end
