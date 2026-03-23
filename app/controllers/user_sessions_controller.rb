@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
     if login(@user.email, @user.password)
       redirect_to posts_path, success: "ログインしました"
     else
-      flash.new[:danger] = "メールまたはパスワードが違います"
+      flash.now[:danger] = "メールまたはパスワードが違います"
       render :new, status: :unprocessable_entity
     end
   end

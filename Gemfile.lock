@@ -108,6 +108,7 @@ GEM
     debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    diff-lcs (1.6.2)
     draper (4.0.6)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -120,6 +121,11 @@ GEM
       activesupport (>= 3.0.0)
     erb (6.0.2)
     erubi (1.13.1)
+    factory_bot (6.5.6)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.5.1)
+      factory_bot (~> 6.5)
+      railties (>= 6.1.0)
     faraday (2.14.1)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -290,6 +296,23 @@ GEM
     request_store (1.7.0)
       rack (>= 1.4)
     rexml (3.4.4)
+    rspec-core (3.13.6)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.8)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (8.0.4)
+      actionpack (>= 7.2)
+      activesupport (>= 7.2)
+      railties (>= 7.2)
+      rspec-core (>= 3.13.0, < 5.0.0)
+      rspec-expectations (>= 3.13.0, < 5.0.0)
+      rspec-mocks (>= 3.13.0, < 5.0.0)
+      rspec-support (>= 3.13.0, < 5.0.0)
+    rspec-support (3.13.7)
     rubocop (1.85.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -375,6 +398,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (5.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
     websocket (1.2.11)
     websocket-driver (0.8.0)
       base64
@@ -395,15 +422,16 @@ DEPENDENCIES
   debug
   draper
   enum_help (= 0.0.19)
+  factory_bot_rails
   importmap-rails
   jbuilder
   kaminari
-  minitest (~> 5.20)
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.2.2)
   rails-i18n
   ransack
+  rspec-rails
   rubocop-rails-omakase
   selenium-webdriver
   simple_form
@@ -414,6 +442,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  webdrivers
 
 BUNDLED WITH
    2.5.22

@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   has_one_attached :image
 
+  validates :title, presence: true
+  validates :body, presence: true
+
   def owned_by?(user)
     user && user.id == user_id
   end
