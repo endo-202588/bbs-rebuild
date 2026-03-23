@@ -1,4 +1,10 @@
-user = User.first
+user = User.find_or_create_by!(email: "test@example.com") do |u|
+  u.password = "password"
+  u.password_confirmation = "password"
+  u.display_name = "テストユーザー"
+  u.first_name = "taro"
+  u.last_name = "test"
+end
 
 50.times do |i|
   post = user.posts.create!(
