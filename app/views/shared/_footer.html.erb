@@ -1,0 +1,14 @@
+<footer class="bg-gray-100 border-t mt-10">
+  <div class="container mx-auto px-4 py-6 flex flex-col items-center gap-2 text-sm text-gray-600">
+
+    <div class="flex gap-4">
+      <%= link_to "トップ", root_path, class: "hover:text-blue-600" %>
+      <%= link_to "投稿一覧", posts_path, class: "hover:text-blue-600" %>
+    </div>
+
+    <div>
+      © <%= Time.current.year %> 掲示板
+    </div>
+
+  </div>
+</footer>

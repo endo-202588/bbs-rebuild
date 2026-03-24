@@ -28,7 +28,7 @@ RSpec.describe "Users", type: :request do
         post users_path, params: invalid
       }.not_to change(User, :count)
 
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
     end
 
     it "passwordとconfirmationが違うと作成されない" do
@@ -39,7 +39,7 @@ RSpec.describe "Users", type: :request do
         post users_path, params: invalid
       }.not_to change(User, :count)
 
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
     end
 
     it "emailが重複していると作成されない" do
@@ -51,7 +51,7 @@ RSpec.describe "Users", type: :request do
         post users_path, params: params
       }.not_to change(User, :count)
 
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
     end
   end
 end
