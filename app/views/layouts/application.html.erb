@@ -20,7 +20,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="<%= 'bg-yellow-100 min-h-screen' if top_page? %>">
+  <body class="<%= 'bg-blue-100 min-h-screen' if top_page? %>">
     <% if current_user %>
       <%= render "shared/header" %>
     <% end %>
@@ -29,5 +29,9 @@
     <main>
       <%= yield %>
     </main>
+
+    <% if current_user %>
+      <%= render "shared/footer" %>
+    <% end %>
   </body>
 </html>
