@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Admin::Users", type: :request do
-
   # =========================
   # GET /admin/users
   # =========================
@@ -128,5 +127,4 @@ RSpec.describe "Admin::Users", type: :request do
       end
     end
   end
-
 end

@@ -83,7 +83,7 @@ RSpec.describe "Admin::Posts", type: :request do
       before do
         delete logout_path
       end
-      
+
       it "削除できない" do
         expect {
           delete admin_post_path(post_record)
