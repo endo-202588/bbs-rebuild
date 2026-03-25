@@ -6,7 +6,13 @@ RUN apt-get update -qq && \
   libpq-dev \
   libyaml-dev \
   nodejs \
-  postgresql-client
+  postgresql-client \
+  wget \
+  gnupg \
+  curl \
+  unzip \
+  chromium \
+  chromium-driver
 
 WORKDIR /app
 

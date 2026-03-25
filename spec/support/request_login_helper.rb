@@ -1,9 +1,9 @@
-module LoginHelper
-  def login(user)
+module RequestLoginHelper
+  def login(user, password: "password")
     post login_path, params: {
       user: {
         email: user.email,
-        password: "password"
+        password: password
       }
     }
   end
